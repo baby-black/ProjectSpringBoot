@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Your Cart</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Giỏ hàng của bạn</h2>
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="table-dark">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng giá</th>
+            <th>Hành động</th>
+            <th>Ảnh sản phẩm</th> <!-- Thêm cột ảnh -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cartItem : ${cartItems}">
+            <td th:text="${cartItem.product.name}"></td>
+            <td th:text="${cartItem.product.price}"></td>
+            <td>
+                <!-- Tạo các form để tăng/giảm số lượng -->
+                <form th:action="@{/cart/update/{id}(id=${cartItem.id})}" method="post" class="d-inline">
+                    <input type="hidden" name="action" value="decrease"/>
+                    <button type="submit" class="btn btn-secondary btn-sm">-</button>
+                </form>
+                <span th:text="${cartItem.quantity}"></span>
+                <form th:action="@{/cart/update/{id}(id=${cartItem.id})}" method="post" class="d-inline">
+                    <input type="hidden" name="action" value="increase"/>
+                    <button type="submit" class="btn btn-secondary btn-sm">+</button>
+                </form>
+            </td>
+            <td th:text="${cartItem.totalPrice}"></td>
+            <td>
+                <a th:href="@{/cart/remove/{id}(id=${cartItem.id})}" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+            <td>
+                <!-- Hiển thị ảnh sản phẩm -->
+                <img th:src="@{${cartItem.product.imageUrl}}" class="product-image" alt="Product Image" width="50">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-end">
+        <a href="/checkout" class="btn btn-primary">Thanh toán</a>
+    </div>
+</div>
+
+<footer class="bg-dark text-center text-white py-3 mt-5">
+    <p>&copy; 2024 Shop System. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

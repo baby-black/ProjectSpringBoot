@@ -1,0 +1,140 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #4c8479;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+header .discount-banner p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.25rem;
+}
+
+/* Search Bar Styles */
+#searchBar {
+    width: 50%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #2b5f56;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #2b5f56;
+    padding: 10px 0;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    background-color: #4c8479;
+    border-radius: 5px;
+}
+
+/* Product Section Styles */
+#products {
+    margin-top: 50px;
+}
+
+.product-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-image {
+    border-radius: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+.rating span {
+    font-size: 1.25rem;
+    color: #f0ad4e;
+}
+
+/* Button Styles */
+.btn-success {
+    background-color: #2b5f56;
+    border-color: #2b5f56;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-success:hover {
+    background-color: #4c8479;
+    border-color: #4c8479;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2b5f56;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    #searchBar {
+        width: 80%;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+
+    .product-card {
+        margin-bottom: 30px;
+    }
+}

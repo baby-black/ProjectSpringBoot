@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="product-id" content="${product.id}">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/Css/product-detail.css}">
+</head>
+<body>
+<header class="text-white p-3">
+    <div class="container">
+        <h1>Chi Tiết Sản Phẩm</h1>
+    </div>
+</header>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img th:src="${product.imageUrl}" class="img-fluid" th:alt="${product.name}">
+        </div>
+        <div class="col-md-6">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.description}"></p>
+            <p th:text="'Giá: $' + ${product.price}" class="text-danger fs-4"></p>
+            <p th:text="'Số lượng: ' + ${product.quantity}" class="fs-5"></p>
+            <a th:href="@{/carts/cart-oder/}" class="btn btn-primary btn-lg">Đặt Hàng</a>
+        </div>
+    </div>
+
+    <!-- Phản hồi từ khách hàng -->
+    <div class="mt-4">
+        <h3>Phản hồi từ khách hàng</h3>
+        <ul id="reviews-list" class="list-group">
+            <!-- Các phản hồi sẽ được hiển thị ở đây -->
+        </ul>
+    </div>
+</div>
+
+<script src="/js/product-detail.js"></script>
+</body>
+</html>

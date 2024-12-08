@@ -1,0 +1,112 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #4c8479;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Product Details Section */
+.container {
+    margin-top: 30px;
+}
+
+.product-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.text-danger {
+    color: #fc0b0b !important;
+}
+
+/* Price Styling */
+.fs-4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Quantity Text */
+.fs-5 {
+    font-size: 1.2rem;
+    color: #777;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #2b5f56;
+    border-color: #2b5f56;
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4c8479;
+    border-color: #4c8479;
+}
+
+/* Reviews Section */
+#reviews-list {
+    margin-top: 30px;
+}
+
+#reviews-list .list-group-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#reviews-list .list-group-item:hover {
+    background-color: #e9f4f0;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .col-md-6 {
+        margin-bottom: 30px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}

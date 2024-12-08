@@ -1,0 +1,83 @@
+/* Reset some defaults */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background image */
+.login-background {
+    background-image: url('/static/img/Cookieeight.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+
+/* Phần đăng nhập */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề đăng nhập */
+.card-header h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Trường nhập */
+.form-control {
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus {
+    background-color: #e9ecef;
+}
+
+/* Nút đăng nhập */
+button[type="submit"] {
+    padding: 12px;
+    background-color: #085652; /* Màu nền nút đăng nhập */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #085652; /* Đổi màu khi hover */
+    color: white;
+}
+
+/* Liên kết đăng ký */
+.text-center a {
+    color: #141313;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Thêm hiệu ứng */
+.card-body {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

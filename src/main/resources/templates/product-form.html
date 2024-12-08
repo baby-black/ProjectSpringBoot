@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/Css/product-form.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container form-container">
+  <h2 class="form-title" th:text="${title}">Thêm/Chỉnh sửa Sản phẩm</h2>
+  <form th:action="@{/admin/save-product}" th:object="${product}" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên Sản phẩm</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Nhập tên sản phẩm" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả</label>
+      <textarea class="form-control" id="description" th:field="*{description}" rows="3" placeholder="Nhập mô tả sản phẩm" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá</label>
+      <input type="number" class="form-control" id="price" th:field="*{price}" step="0.01" placeholder="Nhập giá sản phẩm" required>
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">URL Hình ảnh</label>
+      <input type="text" class="form-control" id="imageUrl" th:field="*{imageUrl}" placeholder="Nhập URL hình ảnh sản phẩm" required>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary">Lưu</button>
+      <a th:href="@{/products}" class="btn btn-secondary">Hủy</a>
+    </div>
+  </form>
+</div>
+
+<footer>
+  &copy; 2024 Product Management. All rights reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
