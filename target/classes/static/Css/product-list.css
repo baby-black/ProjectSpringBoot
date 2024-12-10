@@ -1,140 +1,95 @@
-/* General Body Styles */
+/* Thay đổi màu sắc toàn bộ trang */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    background-color: #f8f9fa; /* Màu nền sáng hơn */
+    color: #2b5f56; /* Chữ màu tối đậm */
 }
 
-/* Header Styles */
-header {
-    background-color: #4c8479;
-    color: white;
-    padding: 60px 0;
-    text-align: center;
+/* Thay thế màu đen trong header và footer */
+header.bg-dark, footer.bg-dark {
+    background-color: #2b5f56 !important; /* Thay màu đen thành màu bạn thích */
 }
 
-header .discount-banner p {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-}
-
-header h1 {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-header p {
-    font-size: 1.25rem;
-}
-
-/* Search Bar Styles */
-#searchBar {
-    width: 50%;
-    margin-top: 20px;
+/* Dòng chữ Giảm giá chạy ngang */
+.discount-banner {
+    font-size: 1.2rem;
     padding: 10px;
-    border-radius: 25px;
-    border: 2px solid #2b5f56;
+    color: #141313;
+    text-align: center;
+    font-weight: bold;
+    animation: slideLeft 10s linear infinite;
 }
 
-/* Navbar Styles */
-.navbar {
-    background-color: #2b5f56;
-    padding: 10px 0;
+/* Hiệu ứng cuộn dòng chữ từ trái sang phải */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
-.navbar .navbar-nav .nav-link {
-    color: white !important;
-    font-size: 1.1rem;
-    padding: 10px 20px;
+/* Phần tiêu đề "Sản phẩm bán chạy" chạy ngang */
+h2.text-center {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2b5f56;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+    animation: scrollLeft 10s linear infinite;
 }
 
-.navbar .navbar-nav .nav-link:hover {
-    background-color: #4c8479;
-    border-radius: 5px;
+/* Hiệu ứng cuộn cho "Sản phẩm bán chạy" */
+/*@keyframes scrollLeft {*/
+/*    0% {*/
+/*        transform: translateX(100%);*/
+/*    }*/
+/*    100% {*/
+/*        transform: translateX(-100%);*/
+/*    }*/
+/*}*/
+
+/* Style cho phần card sản phẩm */
+.card.product-card {
+    border: 1px solid #4c8479;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Product Section Styles */
-#products {
-    margin-top: 50px;
-}
-
-.product-card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
+.card.product-card:hover {
+    transform: translateY(-5px);
 }
 
 .product-image {
-    border-radius: 15px;
     height: 200px;
     object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-body {
+    text-align: center;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    color: #333;
-    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2b5f56;
 }
 
 .card-text {
-    font-size: 1rem;
-    color: #777;
+    color: #555;
 }
 
-.rating span {
-    font-size: 1.25rem;
-    color: #f0ad4e;
-}
-
-/* Button Styles */
+/* Button */
 .btn-success {
-    background-color: #2b5f56;
-    border-color: #2b5f56;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.btn-success:hover {
     background-color: #4c8479;
     border-color: #4c8479;
 }
 
-/* Footer Styles */
-footer {
+.btn-success:hover {
     background-color: #2b5f56;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
-    }
-
-    #searchBar {
-        width: 80%;
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 1rem;
-    }
-
-    .product-card {
-        margin-bottom: 30px;
-    }
+    border-color: #2b5f56;
 }

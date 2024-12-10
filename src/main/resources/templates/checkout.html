@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" th:href="@{/Css/checkout.css}">
+</head>
+<body>
+<div class="checkout-container">
+    <h1>Thanh toán</h1>
+
+    <!-- Hiển thị thông báo khi thanh toán thành công -->
+    <div th:if="${message}" class="success-message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <form th:action="@{/checkout}" method="post" class="checkout-form">
+        <div class="form-section">
+            <h2>Chi tiết thanh toán</h2>
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+            <label for="email">Địa chỉ email</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+            <label for="address">Địa chỉ</label>
+            <input type="text" id="address" name="address" placeholder="123 Main St" required>
+
+            <label for="city">Thành phố</label>
+            <input type="text" id="city" name="city" placeholder="Hà Nội" required>
+
+            <label for="zip">Mã bưu điện</label>
+            <input type="text" id="zip" name="zip" placeholder="12345" required>
+        </div>
+
+        <div class="form-section">
+            <h2>Phương thức thanh toán</h2>
+            <label>
+                <input type="radio" name="payment" value="credit" checked> Thẻ tín dụng
+            </label>
+            <label>
+                <input type="radio" name="payment" value="paypal"> PayPal
+            </label>
+
+            <label for="card-number">Số thẻ</label>
+            <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+            <label for="expiry">Ngày hết hạn</label>
+            <input type="text" id="expiry" name="expiryDate" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Đặt hàng</button>
+    </form>
+</div>
+</body>
+</html>

@@ -13,4 +13,6 @@ public interface ProductService {
     List<Product> searchProducts(String keyword); // Tìm kiếm sản phẩm theo tên
 
     Product findById(Long id);
+
+    List<Product> findProductsByName(String search);
 }

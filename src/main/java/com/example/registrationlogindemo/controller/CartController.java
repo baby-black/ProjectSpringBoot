@@ -6,15 +6,13 @@ import com.example.registrationlogindemo.service.CartService;
 import com.example.registrationlogindemo.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
-@RequestMapping("/carts")
+@RequestMapping("carts")
 public class CartController {
 
     @Autowired
@@ -37,15 +35,9 @@ public class CartController {
     }
 
     // Hiển thị giỏ hàng
-    @GetMapping("/card-oder")
-    public String viewCart(Model model, HttpSession session) {
-        try {
-            List<Cart> cartItems = cartService.getCartItemsForUser(session); // Lấy sản phẩm trong giỏ hàng
-            model.addAttribute("cartItems", cartItems);
-        } catch (Exception e) {
-            System.err.println("Error loading cart: " + e.getMessage());
-            e.printStackTrace();
-        }
+    @GetMapping()
+    public String viewCart() {
+
         return "cart"; // Trả về trang giỏ hàng
     }
 
@@ -57,15 +49,9 @@ public class CartController {
         return "redirect:/cart"; // Quay lại trang giỏ hàng
     }
 
-    // Cập nhật số lượng sản phẩm trong giỏ hàng
-    @PostMapping("/update/{id}")
-    public String updateQuantity(@PathVariable Long id, @RequestParam String action, HttpSession session, RedirectAttributes redirectAttributes) {
-        if ("increase".equals(action) || "decrease".equals(action)) {
-            cartService.updateQuantity(id, action, session); // Cập nhật số lượng sản phẩm trong giỏ hàng
-            redirectAttributes.addFlashAttribute("message", "Cart updated successfully!");
-        } else {
-            redirectAttributes.addFlashAttribute("error", "Invalid action for updating quantity!");
-        }
-        return "redirect:/cart"; // Quay lại trang giỏ hàng
+    @GetMapping("/carts/checkout")
+    public String redirectToCheckout() {
+        return "redirect:/checkout";
     }
+
 }

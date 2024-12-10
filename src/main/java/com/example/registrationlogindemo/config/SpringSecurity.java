@@ -29,23 +29,21 @@ public class SpringSecurity {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize
-//                                .requestMatchers("/register/**", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
-//                                .requestMatchers("/index").permitAll()
-//                                .requestMatchers("/templates/*").permitAll()
-//                                .requestMatchers("/users").hasRole("ADMIN")
-//                                .requestMatchers("/static/*").permitAll()
-                                .anyRequest().permitAll()
+                                .requestMatchers("/register/**", "/login", "/css/**", "/js/**").permitAll() // Công khai
+                                .requestMatchers("/users").hasRole("ADMIN") // Chỉ admin
+                                .anyRequest().authenticated() // Các yêu cầu khác cần đăng nhập
                 )
                 .formLogin(
                         form -> form
-                                .loginPage("/login")
+                                .loginPage("/login") // Trang đăng nhập tùy chỉnh
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .defaultSuccessUrl("/products", true) // Chuyển về /index sau đăng nhập thành công
                                 .permitAll()
                 )
                 .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutSuccessUrl("/login") // Chuyển về trang chủ sau đăng xuất
                                 .permitAll()
                 );
         return http.build();

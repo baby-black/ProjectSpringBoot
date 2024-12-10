@@ -65,4 +65,9 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
     }
 
+    @Override
+    public List<Product> findProductsByName(String search) {
+        return List.of();
+    }
+
 }

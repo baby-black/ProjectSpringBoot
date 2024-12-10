@@ -1,0 +1,21 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+    text-align: center;
+}
+.success-icon {
+    font-size: 5rem;
+    color: #4caf50;
+}
+.message {
+    font-size: 1.2rem;
+    color: #333;
+}
+.btn-custom {
+    background-color: #4c8479;
+    color: white;
+}

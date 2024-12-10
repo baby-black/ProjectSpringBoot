@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cart")
 public class Cart {
 
     @Id
@@ -124,5 +123,8 @@ public class Cart {
     @Override
     public int hashCode() {
         return Objects.hash(id, userId, productId, quantity, price, imageUrl);
+    }
+
+    public void setTotalPrice(double v) {
     }
 }

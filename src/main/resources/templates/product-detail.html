@@ -24,7 +24,8 @@
             <p th:text="${product.description}"></p>
             <p th:text="'Giá: $' + ${product.price}" class="text-danger fs-4"></p>
             <p th:text="'Số lượng: ' + ${product.quantity}" class="fs-5"></p>
-            <a th:href="@{/carts/cart-oder/}" class="btn btn-primary btn-lg">Đặt Hàng</a>
+            <a th:href="@{/carts}" class="btn btn-primary btn-lg">Đặt Hàng</a>
+
         </div>
     </div>
 

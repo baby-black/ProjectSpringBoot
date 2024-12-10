@@ -2,6 +2,7 @@ package com.example.registrationlogindemo.controller;
 
 import com.example.registrationlogindemo.entity.Product;
 import com.example.registrationlogindemo.service.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // Hiển thị danh sách sản phẩm với thanh tìm kiếm
+    // Hiển thị danh sách sản phẩm với tính năng tìm kiếm
     @GetMapping
     public String listProducts(@RequestParam(value = "query", required = false) String query, Model model) {
         List<Product> products = (query != null && !query.isEmpty())
@@ -80,25 +81,50 @@ public class ProductController {
         return "product-detail"; // Trang chi tiết sản phẩm
     }
 
-    // API: Lấy danh sách sản phẩm
+    // ** API Endpoint **
+
+    // Lấy danh sách sản phẩm (API)
     @GetMapping("/api")
     @ResponseBody
     public List<Product> getAllProductsApi() {
         return productService.getAllProducts();
     }
 
-    // API: Lấy thông tin chi tiết sản phẩm
+    // Lấy thông tin chi tiết sản phẩm (API)
     @GetMapping("/api/{id}")
     @ResponseBody
-    public Product getProductByIdApi(@PathVariable Long id) {
-        return productService.getProductById(id);
+    public ResponseEntity<Product> getProductByIdApi(@PathVariable Long id) {
+        Product product = productService.getProductById(id);
+        return ResponseEntity.ok(product);
     }
 
-    // API: Lấy danh sách phản hồi của một sản phẩm (tạm thời)
-    @GetMapping("/api/{id}/reviews")
+    // Thêm sản phẩm mới qua API
+    @PostMapping("/api")
     @ResponseBody
-    public List<String> getProductReviews(@PathVariable Long id) {
-        // Dữ liệu mẫu, có thể thay thế bằng kết nối cơ sở dữ liệu
-        return List.of("Sản phẩm rất tốt!", "Chất lượng tuyệt vời.", "Rất đáng tiền!");
+    public ResponseEntity<Product> addProductApi(@RequestBody Product product) {
+        Product savedProduct = productService.saveProduct(product);
+        return ResponseEntity.ok(savedProduct);
+    }
+
+    // Xóa sản phẩm qua API
+    @DeleteMapping("/api/{id}")
+    @ResponseBody
+    public ResponseEntity<String> deleteProductApi(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.ok("Sản phẩm đã được xóa!");
+    }
+
+    // Cập nhật sản phẩm qua API
+    @PutMapping("/api/{id}")
+    @ResponseBody
+    public ResponseEntity<Product> updateProductApi(@PathVariable Long id, @RequestBody Product product) {
+        Product updatedProduct = productService.updateProduct(id, product);
+        return ResponseEntity.ok(updatedProduct);
+    }
+    @GetMapping("/products")
+    public String showProducts(Model model, @RequestParam(value = "search", required = false) String search) {
+        List<Product> products = productService.findProductsByName(search); // Giả sử bạn có một phương thức tìm kiếm
+        model.addAttribute("products", products);
+        return "product-list";
     }
 }
